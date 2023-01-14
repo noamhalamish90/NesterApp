@@ -1,6 +1,8 @@
 //Dependancies:
 // npm install react-native-gifted-chat @react-navigation/native @react-navigation/stack
 // expo install firebase expo-constants dotenv react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+// Icons from FontAwesome
+// npm i --save @fortawesome/free-solid-svg-icons @fortawesome/react-native-fontawesome
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';

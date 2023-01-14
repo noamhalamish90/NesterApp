@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Alert,
+  TextInput,
 } from 'react-native';
 import {
   NavigationHelpersContext,
@@ -15,6 +16,17 @@ import { FontAwesome } from '@expo/vector-icons';
 import colors from './colors';
 import { Entypo } from '@expo/vector-icons';
 import { CollectionReference } from 'firebase/firestore';
+import { auth, database } from '../config/firebase';
+import {
+  collection,
+  addDoc,
+  orderBy,
+  query,
+  onSnapshot,
+} from 'firebase/firestore';
+import { Time } from 'react-native-gifted-chat';
+import EventInput from './EventInput';
+
 const homeImage = require('../assets/backImage.png');
 
 const Home = () => {
@@ -41,6 +53,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+      <EventInput />
       <TouchableOpacity
         onPress={() => navigation.navigate('Chat')}
         style={styles.chatButton}
@@ -76,5 +89,34 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     marginRight: 20,
     marginBottom: 50,
+  },
+  buttonsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: '',
+    alignItems: 'flex-end',
+    margin: 50,
+    width: '80%',
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    borderWidth: 4,
+    borderRadius: 30,
+    borderColor: 'red',
+  },
+  button: {
+    width: '25%',
+    height: 40,
+    backgroundColor: 'green',
+    margin: 10,
+    borderRadius: 10,
+  },
+  input: {
+    backgroundColor: '#f6f7f8',
+    height: 58,
+    marginBottom: 20,
+    fontSize: 16,
+    borderRadius: 10,
+    padding: 12,
   },
 });
